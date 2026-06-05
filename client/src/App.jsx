@@ -12,7 +12,6 @@ import { PeriodontogramModule } from "./components/PeriodontogramModule";
 import { PeriodontogramGraphicModule } from "./components/PeriodontogramGraphicModule";
 import { AppointmentModule } from "./components/AppointmentModule";
 import { Icon } from "./components/Icons";
-import { demoPatients } from "./data/demoPatients";
 import { patientService } from "./services/patientService";
 import { formatDate, initials } from "./utils/patient";
 
@@ -36,7 +35,6 @@ function App() {
   const [editing, setEditing] = useState(undefined);
   const [formOpen, setFormOpen] = useState(false);
   const [page, setPage] = useState(1);
-  const [demoMode, setDemoMode] = useState(false);
   const [toast, setToast] = useState("");
   const [activeModule, setActiveModule] = useState("Pacientes");
   const [navOpen, setNavOpen] = useState(false);
@@ -44,10 +42,7 @@ function App() {
   useEffect(() => {
     patientService.list()
       .then(setPatients)
-      .catch(() => {
-        setPatients(demoPatients);
-        setDemoMode(true);
-      });
+      .catch((error) => setToast(error.message));
   }, []);
 
   useEffect(() => {
@@ -95,13 +90,7 @@ function App() {
 
   async function save(patient) {
     try {
-      if (demoMode) {
-        if (patient.id) {
-          setPatients((current) => current.map((item) => item.id === patient.id ? patient : item));
-        } else {
-          setPatients((current) => [{ ...patient, id: Math.max(...current.map((item) => item.id), 1000) + 1, fechaIngreso: new Date().toISOString().slice(0, 10) }, ...current]);
-        }
-      } else if (patient.id) {
+      if (patient.id) {
         const updated = await patientService.update(patient.id, patient);
         setPatients((current) => current.map((item) => item.id === updated.id ? updated : item));
       } else {
@@ -118,7 +107,7 @@ function App() {
   async function remove(patient) {
     if (!window.confirm(`¿Eliminar la ficha de ${patient.nombres} ${patient.apellidoPaterno}?`)) return;
     try {
-      if (!demoMode) await patientService.remove(patient.id);
+      await patientService.remove(patient.id);
       setPatients((current) => current.filter((item) => item.id !== patient.id));
       setToast("Paciente eliminado correctamente");
     } catch (error) {
@@ -172,7 +161,6 @@ function App() {
           <button className="logout" onClick={() => navigate("Salir")}>Salir</button>
         </nav>
         <div className="topbar-right">
-          {demoMode && <span className="demo-tag">Modo demostracion</span>}
           <span className="user-avatar">HA</span>
           <div className="user-copy"><strong>Administrador</strong><small>Gestion de pacientes</small></div>
         </div>
