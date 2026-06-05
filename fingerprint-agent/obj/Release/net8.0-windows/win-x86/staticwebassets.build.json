@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "EKV2Na5eb0Q61FesAqRQKjTJTSXP8g6qWpJhl6hRNo8=",
+  "Source": "FingerprintAgent",
+  "BasePath": "_content/FingerprintAgent",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

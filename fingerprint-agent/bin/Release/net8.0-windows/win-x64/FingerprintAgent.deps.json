@@ -1,0 +1,68 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0/win-x64",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {},
+    ".NETCoreApp,Version=v8.0/win-x64": {
+      "FingerprintAgent/1.0.0": {
+        "dependencies": {
+          "DPFPDevNET": "1.6.1.0",
+          "DPFPEngNET": "1.6.1.0",
+          "DPFPShrNET": "1.6.1.0"
+        },
+        "runtime": {
+          "FingerprintAgent.dll": {}
+        }
+      },
+      "DPFPDevNET/1.6.1.0": {
+        "runtime": {
+          "DPFPDevNET.dll": {
+            "assemblyVersion": "1.6.1.0",
+            "fileVersion": "1.6.1.0"
+          }
+        }
+      },
+      "DPFPEngNET/1.6.1.0": {
+        "runtime": {
+          "DPFPEngNET.dll": {
+            "assemblyVersion": "1.6.1.0",
+            "fileVersion": "1.6.1.0"
+          }
+        }
+      },
+      "DPFPShrNET/1.6.1.0": {
+        "runtime": {
+          "DPFPShrNET.dll": {
+            "assemblyVersion": "1.6.1.0",
+            "fileVersion": "1.6.1.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FingerprintAgent/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DPFPDevNET/1.6.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DPFPEngNET/1.6.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DPFPShrNET/1.6.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
